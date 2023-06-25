@@ -55,13 +55,16 @@ int main()
         printf("1) Yeni knapsack problemi gir:\n");
         printf("2) Cikis\n");
 
-        if (n > 0 && secim == 1 || secim == 3)
+        if (n>0)
         {
             printf("3) Var olan cantaya yeni esya ekle\n");
         }
 
         scanf("%d", &secim);
-
+        
+        if(secim != 3){
+        	
+		}
         switch (secim)
         {
         case 1:
@@ -100,29 +103,31 @@ int main()
                 printf("Cikis yaptiniz.\n");
                 break;
                 
-            case 3:
-	            printf("Kac tane yeni esya eklemek istersiniz? ");
-	            scanf("%d", &m);
-	
-	            if(m > 0) {
-	                agirliklar = realloc(agirliklar, (n+m)*sizeof(int));
-	                degerler = realloc(degerler, (n+m)*sizeof(int));
-	
-	                int i;
-	                for (i = n; i < n+m; i++) {
-	                    printf("Esya %d'in agirligini gir: ", i + 1);
-	                    scanf("%d", &agirliklar[i]);
-	                    printf("Esya %d'in degerini gir: ", i + 1);
-	                    scanf("%d", &degerler[i]);
-	                }
-	
-	                n = n + m;
-	            }
-	
-	            int yeniCantaKapasitesi = canta(kapasite, agirliklar, degerler, n);
-	            printf("Elde edilebilecek yeni maksimum deger: %d\n\n", yeniCantaKapasitesi);
-	
-	            break;
+        case 3:
+	            if(n>0){
+		            printf("Kac tane yeni esya eklemek istersiniz? ");
+		            scanf("%d", &m);
+		
+		            if(m > 0) {
+		                agirliklar = realloc(agirliklar, (n+m)*sizeof(int));
+		                degerler = realloc(degerler, (n+m)*sizeof(int));
+		
+		                int i;
+		                for (i = n; i < n+m; i++) {
+		                    printf("Esya %d'in agirligini gir: ", i + 1);
+		                    scanf("%d", &agirliklar[i]);
+		                    printf("Esya %d'in degerini gir: ", i + 1);
+		                    scanf("%d", &degerler[i]);
+		                }
+		
+		                n = n + m;
+		            }
+		
+		            int yeniCantaKapasitesi = canta(kapasite, agirliklar, degerler, n);
+		            printf("Elde edilebilecek yeni maksimum deger: %d\n\n", yeniCantaKapasitesi);
+		
+		            break;
+				}
         default:
             printf("Gecersiz bir secim yaptiniz.\n\n");
             break;
